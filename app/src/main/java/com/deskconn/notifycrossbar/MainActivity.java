@@ -15,11 +15,17 @@ import io.crossbar.autobahn.wamp.types.Subscription;
 public class MainActivity extends AppCompatActivity {
 
     private Session mSession;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tv = (TextView) this.findViewById(R.id.mywidget);
+        tv.setSelected(true);  // Set focus to the textview
+
+
         connect();
     }
 
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.tlabel1);
         textView.setText("pid: " + params.get(0));
         textView1.setText("date: " + params.get(1));
+        tv.setText("pid: " + params.get(0)+"   date: "+ params.get(1));
 
     }
 
